@@ -46,49 +46,52 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[@title='Watchlist']")
     private WebElement watchlistButton;
 
-   public boolean isHeaderVisible(){
-       return header.isDisplayed();
-   }
+    public boolean isHeaderVisible() {
+        return header.isDisplayed();
+    }
 
-    public boolean isFooterVisible(){
+    public boolean isFooterVisible() {
         return footer.isDisplayed();
     }
 
-    public boolean isSignInButtonVisible(){
+    public boolean isSignInButtonVisible() {
         return signInButton.isDisplayed();
     }
 
-    public boolean isRegisterButtonVisible(){
+    public boolean isRegisterButtonVisible() {
         return registerButton.isDisplayed();
     }
 
-    public boolean isShopByCategoryButtonVisible(){
+    public boolean isShopByCategoryButtonVisible() {
         return shopByCategoryButton.isDisplayed();
     }
 
-    public boolean isSearchFieldVisible(){
+    public boolean isSearchFieldVisible() {
         return searchField.isDisplayed();
     }
 
-
-    public boolean isSearchButtonVisible(){
+    public boolean isSearchButtonVisible() {
         return searchButton.isDisplayed();
     }
 
-    public boolean isCartIconVisible(){
+    public boolean isCartIconVisible() {
         return cartIcon.isDisplayed();
     }
 
-    public boolean isNotificationButtonVisible(){
+    public boolean isNotificationButtonVisible() {
         return notificationButton.isDisplayed();
     }
 
-    public boolean isShipToButtonVisible(){
+    public boolean isShipToButtonVisible() {
         return shipToButton.isDisplayed();
     }
 
-    public boolean isHelpAndContactButtonVisible(){
+    public boolean isHelpAndContactButtonVisible() {
         return helpAndContactButton.isDisplayed();
+    }
+
+    public boolean isWatchlistButtonVisible() {
+        return watchlistButton.isDisplayed();
     }
 }
 
