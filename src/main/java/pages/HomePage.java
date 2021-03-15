@@ -16,7 +16,7 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//footer[@id ='glbfooter']")
     private WebElement footer;
 
-    @FindBy(xpath = "/span[@id='gh-ug']//a[text()='Sign in']")
+    @FindBy(xpath = "//span[@id='gh-ug']//a[text()='Sign in']")
     private WebElement signInButton;
 
     @FindBy(xpath = "//span[@id='gh-ug']//a[text()='register']")
@@ -40,11 +40,18 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//button[@class='gh-eb-li-a gh-icon']")
     private WebElement shipToButton;
 
+    @FindBy(xpath = "//table[@id='gh-sbc']")
+    private WebElement shopByCategoryPopup;
+
     @FindBy(xpath = "//a[text()=' Help & Contact']")
     private WebElement helpAndContactButton;
 
+    @FindBy(xpath = "//a[@id='gh-shop-see-all']")
+    private WebElement seeAllCategoriesButton;
+
     @FindBy(xpath = "//a[@title='Watchlist']")
     private WebElement watchlistButton;
+
 
     public void openHomePage(final String url) {
         driver.get(url);
@@ -68,6 +75,10 @@ public class HomePage extends BasePage {
 
     public boolean isShopByCategoryButtonVisible() {
         return shopByCategoryButton.isDisplayed();
+    }
+
+    public void clickOnShopByCategoryButton() {
+        shopByCategoryButton.click();
     }
 
     public boolean isSearchFieldVisible() {
@@ -105,5 +116,14 @@ public class HomePage extends BasePage {
     public boolean isWatchlistButtonVisible() {
         return watchlistButton.isDisplayed();
     }
+
+    public boolean isShopByCategoryPopupVisible() {
+        return shopByCategoryPopup.isDisplayed();
+    }
+    public boolean isSeeAllCategoriesButtonVisible() {
+        return seeAllCategoriesButton.isDisplayed();
+    }
+
+
 }
 

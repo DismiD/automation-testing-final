@@ -13,3 +13,7 @@ U
 %src/main/java/pages/RegisterPage.java,6\6\66077f32b9dc24295217bea1c5870e4d29175618
 S
 #src/main/java/pages/SignInPage.java,e\a\ea2d8c62f60d3b6e20d6bc3e4d53a997922c9337
+Z
+*src/main/java/pages/SearchResultsPage.java,c\a\ca86c940ab7a6e193dfce990fe04c0e5b484c587
+b
+2src/main/java/stepdefinitions/DefinitionSteps.java,d\0\d028ced28def9a831d5eb8017524b3c7687e049d

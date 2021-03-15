@@ -65,7 +65,78 @@ public class DefinitionSteps {
     @Then("User checks that products in a search list contains keyword {string}")
     public void userChecksThatProductsInASearchListContainsKeywordKeyword(final String keyword) {
        searchResultsPage = pageFactoryManager.getSearchResultsPage();
-        homePage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
+       homePage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
       assertTrue(searchResultsPage.productListContainsSearchText(keyword));
+    }
+
+    @And("User checks header visibility")
+    public void userChecksHeaderVisibility() {
+        homePage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
+        assertTrue(homePage.isHeaderVisible());
+    }
+
+    @And("User checks footer visibility")
+    public void userChecksFooterVisibility() {
+        assertTrue(homePage.isFooterVisible());
+    }
+
+    @And("User checks cart visibility")
+    public void userChecksCartVisibility() {
+        assertTrue(homePage.isCartIconVisible());
+    }
+
+    @And("User checks that notification icon visibility")
+    public void userChecksThatNotificationIconVisibility() {
+        assertTrue(homePage.isNotificationButtonVisible());
+    }
+
+    @And("User checks register button visibility")
+    public void userChecksRegisterButtonVisibility() {
+        assertTrue(homePage.isRegisterButtonVisible());
+    }
+
+    @And("User checks sign in button visibility")
+    public void userChecksSignInButtonVisibility() {
+        assertTrue(homePage.isSignInButtonVisible());
+    }
+
+    @And("User checks ship to button visibility")
+    public void userChecksShipToButtonVisibility() {
+        assertTrue(homePage.isShipToButtonVisible());
+    }
+
+    @And("User checks shop by category button visibility")
+    public void userChecksShopByCategoryButtonVisibility() {
+        assertTrue(homePage.isShopByCategoryButtonVisible());
+    }
+
+    @And("User checks help and contact button visibility")
+    public void userChecksHelpAndContactButtonVisibility() {
+        assertTrue(homePage.isHelpAndContactButtonVisible());
+    }
+
+    @And("User checks watchlist button visibility")
+    public void userChecksWatchlistButtonVisibility() {
+        assertTrue(homePage.isWatchlistButtonVisible());
+    }
+
+    @And("User checks search button visibility")
+    public void userChecksSearchButtonVisibility() {
+       assertTrue(homePage.isSearchButtonVisible());
+    }
+
+    @When("User clicks Shop by category button")
+    public void userClicksShopByCategoryButton() {
+        homePage.clickOnShopByCategoryButton();
+    }
+
+    @And("User checks Shop by category popup visibility")
+    public void userChecksShopByCategoryPopupVisibility() {
+        assertTrue(homePage.isShopByCategoryPopupVisible());
+    }
+
+    @Then("User checks that see all categories button is visible")
+    public void userChecksThatSeeAllCategoriesButtonIsVisible() {
+        assertTrue(homePage.isSeeAllCategoriesButtonVisible());
     }
 }
