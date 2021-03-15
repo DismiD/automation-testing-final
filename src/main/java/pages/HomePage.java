@@ -46,6 +46,10 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[@title='Watchlist']")
     private WebElement watchlistButton;
 
+    public void openHomePage(final String url) {
+        driver.get(url);
+    }
+
     public boolean isHeaderVisible() {
         return header.isDisplayed();
     }
@@ -70,8 +74,16 @@ public class HomePage extends BasePage {
         return searchField.isDisplayed();
     }
 
+    public void enterTextToSearchField(final String searchText) {
+        searchField.sendKeys(searchText);
+    }
+
     public boolean isSearchButtonVisible() {
         return searchButton.isDisplayed();
+    }
+
+    public void clickOnSearchButton() {
+        searchButton.click();
     }
 
     public boolean isCartIconVisible() {
