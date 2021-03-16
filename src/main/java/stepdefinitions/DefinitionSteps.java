@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import pages.HomePage;
 import pages.RegisterPage;
 import pages.SearchResultsPage;
+import pages.SignInPage;
 
 import static io.github.bonigarcia.wdm.WebDriverManager.chromedriver;
 import static org.junit.Assert.assertFalse;
@@ -25,6 +26,7 @@ public class DefinitionSteps {
     private HomePage homePage;
     private SearchResultsPage searchResultsPage;
     private RegisterPage registerPage;
+    private SignInPage signInPage;
 
 
     @Before
@@ -218,5 +220,44 @@ public class DefinitionSteps {
     public void userChecksIfCreateAccountButtonIsEnabled() {
         registerPage.waitForElementToBeClickable(DEFAULT_TIMEOUT ,registerPage.getCreateAccountButton());
         assertTrue(registerPage.isCreateAccountButtonEnabled());
+    }
+
+    @When("User clicks Sign in button")
+    public void userClicksSignInButton() {
+        homePage.clickOnSignInButton();
+    }
+
+
+    @And("User checks email or username field visibility")
+    public void userChecksEmailOrUsernameFieldVisibility() {
+      signInPage = pageFactoryManager.getSignInPage();
+      signInPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
+      assertTrue(signInPage.isEmailOrUsernameFieldVisible());
+    }
+
+    @And("User checks Continue button visibility")
+    public void userChecksContinueButtonVisibility() {
+        signInPage.waitForElementToBeClickable(DEFAULT_TIMEOUT,signInPage.getContinueButton());
+        assertTrue(signInPage.isContinueButtonVisible());
+    }
+
+    @And("User checks Continue with Apple button visibility")
+    public void userChecksContinueWithAppleButtonVisibilityOnSignInPage() {
+        assertTrue(signInPage.isContinueWithAppleButtonVisible());
+    }
+
+    @And("User checks Continue with Google button visibility")
+    public void userChecksContinueWithGoogleButtonVisibilityOnSignInPage() {
+        assertTrue(signInPage.isContinueWithGoogleButtonVisible());
+    }
+
+    @And("User checks Continue with Facebook button visibility")
+    public void userChecksContinueWithFacebookButtonVisibilityOnSignInPage() {
+        assertTrue(signInPage.isContinueWithFacebookButtonVisible());
+    }
+
+    @Then("User checks that stay signed in checkbox is selected")
+    public void userChecksThatStaySignedInCheckboxIsSelected() {
+        assertTrue(signInPage.isStaySignedInCheckboxSelected());
     }
 }

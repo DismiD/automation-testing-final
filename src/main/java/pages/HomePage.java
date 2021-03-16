@@ -68,6 +68,9 @@ public class HomePage extends BasePage {
     public boolean isSignInButtonVisible() {
         return signInButton.isDisplayed();
     }
+    public void clickOnSignInButton(){
+        signInButton.click();
+    }
 
     public boolean isRegisterButtonVisible() {
         return registerButton.isDisplayed();

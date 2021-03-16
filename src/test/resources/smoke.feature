@@ -56,4 +56,18 @@ Feature: Smoke
 
     Examples:
       | homePage                    | firstName  | lastName  | email           | password|
-      | https://www.ebay.com        |  Andrii    | Stroiev   |test@gmail.com   | a1234567  |
+      | https://www.ebay.com        |  Andrii    | Stroiev   |test@gmail.com   | a1234567 |
+
+  Scenario Outline: Check sign in components visibility
+    Given User opens '<homePage>' page
+    When User clicks Sign in button
+    And User checks email or username field visibility
+    And User checks Continue button visibility
+    And User checks Continue with Apple button visibility
+    And User checks Continue with Google button visibility
+    And User checks Continue with Facebook button visibility
+    Then User checks that stay signed in checkbox is selected
+
+    Examples:
+      | homePage              |
+      | https://www.ebay.com  |
