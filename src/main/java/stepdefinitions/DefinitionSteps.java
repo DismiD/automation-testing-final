@@ -7,15 +7,15 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import manager.PageFactoryManager;
-
-import static org.junit.Assert.assertTrue;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.HomePage;
+import pages.RegisterPage;
 import pages.SearchResultsPage;
 
 import static io.github.bonigarcia.wdm.WebDriverManager.chromedriver;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class DefinitionSteps {
 
@@ -24,6 +24,7 @@ public class DefinitionSteps {
     private PageFactoryManager pageFactoryManager;
     private HomePage homePage;
     private SearchResultsPage searchResultsPage;
+    private RegisterPage registerPage;
 
 
     @Before
@@ -64,9 +65,9 @@ public class DefinitionSteps {
 
     @Then("User checks that products in a search list contains keyword {string}")
     public void userChecksThatProductsInASearchListContainsKeywordKeyword(final String keyword) {
-       searchResultsPage = pageFactoryManager.getSearchResultsPage();
-       homePage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
-      assertTrue(searchResultsPage.productListContainsSearchText(keyword));
+        searchResultsPage = pageFactoryManager.getSearchResultsPage();
+        homePage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
+        assertTrue(searchResultsPage.productListContainsSearchText(keyword));
     }
 
     @And("User checks header visibility")
@@ -122,7 +123,7 @@ public class DefinitionSteps {
 
     @And("User checks search button visibility")
     public void userChecksSearchButtonVisibility() {
-       assertTrue(homePage.isSearchButtonVisible());
+        assertTrue(homePage.isSearchButtonVisible());
     }
 
     @When("User clicks Shop by category button")
@@ -138,5 +139,84 @@ public class DefinitionSteps {
     @Then("User checks that see all categories button is visible")
     public void userChecksThatSeeAllCategoriesButtonIsVisible() {
         assertTrue(homePage.isSeeAllCategoriesButtonVisible());
+    }
+
+    @When("User clicks register button")
+    public void userClicksRegisterButton() {
+        homePage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
+        homePage.clickOnRegisterButton();
+    }
+
+    @And("User checks first name field visibility")
+    public void userChecksFirstNameFieldVisibility() {
+        registerPage = pageFactoryManager.getRegisterPage();
+        registerPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
+        assertTrue(registerPage.isFirstNameFieldVisible());
+    }
+
+    @And("User checks last name field visibility")
+    public void userChecksLastNameFieldVisibility() {
+        assertTrue(registerPage.isLastNameFieldVisible());
+    }
+
+    @And("User checks email field visibility")
+    public void userChecksEmailFieldVisibility() {
+        assertTrue(registerPage.isEmailFieldVisible());
+    }
+
+    @And("User checks password field visibility")
+    public void userChecksPasswordFieldVisibility() {
+        assertTrue(registerPage.isPasswordFieldVisible());
+    }
+
+    @And("User checks Create account button visibility")
+    public void userChecksCreateAccountButtonVisibility() {
+        assertTrue(registerPage.isCreateAccountButtonVisible());
+    }
+
+    @And("User checks Create account button is disabled")
+    public void userChecksCreateAccountButtonIsDisabled() {
+        assertFalse(registerPage.isCreateAccountButtonEnabled());
+    }
+
+    @And("User checks Continue with Google  button visibility")
+    public void userChecksContinueWithGoogleButtonVisibility() {
+        assertTrue(registerPage.isContinueWithGoogleButtonVisible());
+    }
+
+    @And("User checks Continue with Facebook  button visibility")
+    public void userChecksContinueWithFacebookButtonVisibility() {
+        assertTrue(registerPage.isContinueWithFacebookButtonVisible());
+    }
+
+    @And("User checks Continue with Apple  button visibility")
+    public void userChecksContinueWithAppleButtonVisibility() {
+        assertTrue(registerPage.isContinueWithAppleButtonVisible());
+    }
+
+    @And("User enters first name {string}")
+    public void userEntersFirstNameFirstName(final String firstName) {
+        registerPage.enterFirstName(firstName);
+    }
+
+    @And("User enters last name {string}")
+    public void userEntersLastNameLastName(final String lastName) {
+        registerPage.enterLastName(lastName);
+    }
+
+    @And("User enters email {string}")
+    public void userEntersEmailEmail(final String email) {
+        registerPage.enterEmail(email);
+    }
+
+    @And("User enters password {string}")
+    public void userEntersPasswordPassword(final String password) {
+        registerPage.enterPassword(password);
+    }
+
+    @Then("User checks if Create account button is enabled")
+    public void userChecksIfCreateAccountButtonIsEnabled() {
+        registerPage.waitForElementToBeClickable(DEFAULT_TIMEOUT ,registerPage.getCreateAccountButton());
+        assertTrue(registerPage.isCreateAccountButtonEnabled());
     }
 }

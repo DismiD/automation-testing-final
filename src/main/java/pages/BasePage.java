@@ -31,6 +31,10 @@ public class BasePage {
         WebDriverWait wait = new WebDriverWait(driver, timeToWait);
         wait.until(ExpectedConditions.visibilityOf(element));
     }
+    public void waitForElementToBeClickable(long timeToWait, WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, timeToWait);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
 
     public void implicitlyWait(long timeToWait) {
         driver.manage().timeouts().implicitlyWait(timeToWait, TimeUnit.SECONDS);

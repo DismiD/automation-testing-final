@@ -73,6 +73,10 @@ public class HomePage extends BasePage {
         return registerButton.isDisplayed();
     }
 
+    public void  clickOnRegisterButton(){
+        registerButton.click();
+    }
+
     public boolean isShopByCategoryButtonVisible() {
         return shopByCategoryButton.isDisplayed();
     }

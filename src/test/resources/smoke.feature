@@ -35,3 +35,25 @@ Feature: Smoke
     Examples:
       | homePage                            |
       | https://www.ebay.com                |
+
+  Scenario Outline: Check register components visibility
+    Given User opens '<homePage>' page
+    When User clicks register button
+    And User checks first name field visibility
+    And User checks last name field visibility
+    And User checks email field visibility
+    And User checks password field visibility
+    And User checks Create account button visibility
+    And User checks Create account button is disabled
+    And User checks Continue with Google  button visibility
+    And User checks Continue with Facebook  button visibility
+    And User checks Continue with Apple  button visibility
+    And User enters first name '<firstName>'
+    And User enters last name '<lastName>'
+    And User enters email '<email>'
+    And User enters password '<password>'
+    Then User checks if Create account button is enabled
+
+    Examples:
+      | homePage                    | firstName  | lastName  | email           | password|
+      | https://www.ebay.com        |  Andrii    | Stroiev   |test@gmail.com   | a1234567  |
