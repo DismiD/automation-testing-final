@@ -68,7 +68,8 @@ public class HomePage extends BasePage {
     public boolean isSignInButtonVisible() {
         return signInButton.isDisplayed();
     }
-    public void clickOnSignInButton(){
+
+    public void clickOnSignInButton() {
         signInButton.click();
     }
 
@@ -76,7 +77,7 @@ public class HomePage extends BasePage {
         return registerButton.isDisplayed();
     }
 
-    public void  clickOnRegisterButton(){
+    public void clickOnRegisterButton() {
         registerButton.click();
     }
 
@@ -127,6 +128,7 @@ public class HomePage extends BasePage {
     public boolean isShopByCategoryPopupVisible() {
         return shopByCategoryPopup.isDisplayed();
     }
+
     public boolean isSeeAllCategoriesButtonVisible() {
         return seeAllCategoriesButton.isDisplayed();
     }

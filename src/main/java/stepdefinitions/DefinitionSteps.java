@@ -9,14 +9,10 @@ import io.cucumber.java.en.When;
 import manager.PageFactoryManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.HomePage;
-import pages.RegisterPage;
-import pages.SearchResultsPage;
-import pages.SignInPage;
+import pages.*;
 
 import static io.github.bonigarcia.wdm.WebDriverManager.chromedriver;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class DefinitionSteps {
 
@@ -27,6 +23,8 @@ public class DefinitionSteps {
     private SearchResultsPage searchResultsPage;
     private RegisterPage registerPage;
     private SignInPage signInPage;
+    private ProductPage productPage;
+    private CartPage cartPage;
 
 
     @Before
@@ -218,7 +216,7 @@ public class DefinitionSteps {
 
     @Then("User checks if Create account button is enabled")
     public void userChecksIfCreateAccountButtonIsEnabled() {
-        registerPage.waitForElementToBeClickable(DEFAULT_TIMEOUT ,registerPage.getCreateAccountButton());
+        registerPage.waitForElementToBeClickable(DEFAULT_TIMEOUT, registerPage.getCreateAccountButton());
         assertTrue(registerPage.isCreateAccountButtonEnabled());
     }
 
@@ -230,14 +228,14 @@ public class DefinitionSteps {
 
     @And("User checks email or username field visibility")
     public void userChecksEmailOrUsernameFieldVisibility() {
-      signInPage = pageFactoryManager.getSignInPage();
-      signInPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
-      assertTrue(signInPage.isEmailOrUsernameFieldVisible());
+        signInPage = pageFactoryManager.getSignInPage();
+        signInPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
+        assertTrue(signInPage.isEmailOrUsernameFieldVisible());
     }
 
     @And("User checks Continue button visibility")
     public void userChecksContinueButtonVisibility() {
-        signInPage.waitForElementToBeClickable(DEFAULT_TIMEOUT,signInPage.getContinueButton());
+        signInPage.waitForElementToBeClickable(DEFAULT_TIMEOUT, signInPage.getContinueButton());
         assertTrue(signInPage.isContinueButtonVisible());
     }
 
@@ -259,5 +257,39 @@ public class DefinitionSteps {
     @Then("User checks that stay signed in checkbox is selected")
     public void userChecksThatStaySignedInCheckboxIsSelected() {
         assertTrue(signInPage.isStaySignedInCheckboxSelected());
+    }
+
+
+    @And("User clicks on first product")
+    public void userClicksOnFirstProduct() {
+        searchResultsPage = pageFactoryManager.getSearchResultsPage();
+        searchResultsPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
+        searchResultsPage.clickOnFirstProductInProductList();
+    }
+
+    @And("User checks that Add to cart button visible")
+    public void userChecksThatAddToCartButtonVisible() {
+        productPage = pageFactoryManager.getProductPage();
+        productPage.waitForVisibilityOfElement(DEFAULT_TIMEOUT, productPage.getAddToCartButton());
+        assertTrue(productPage.isAddToCartButtonVisible());
+    }
+
+    @And("User clicks on Add to cart button")
+    public void userClicksOnAddToCartButton() {
+        productPage.clickOnAddToCartButton();
+    }
+
+
+    @And("User checks number of products in cart equals {string}")
+    public void userChecksNumberOfProductsInCartEqualsNumberOfProductsInCart(final String numberOfProductsInCart) {
+        cartPage = pageFactoryManager.getCartPage();
+        cartPage.waitForPageLoadComplete(DEFAULT_TIMEOUT);
+        assertEquals(String.valueOf(cartPage.numberOfProductsInCart()), numberOfProductsInCart);
+    }
+
+    @Then("User checks that cart has added product {string}")
+    public void userChecksThatCartHasAddedProduct(final String addedProductTitle) {
+        assertTrue(cartPage.isProductListInCartContainsAddedProduct(addedProductTitle));
+
     }
 }

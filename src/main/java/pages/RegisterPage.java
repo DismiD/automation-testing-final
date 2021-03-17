@@ -38,43 +38,55 @@ public class RegisterPage extends BasePage {
         return createAccountButton;
     }
 
-    public boolean isFirstNameFieldVisible (){
-      return   firstNameField.isDisplayed();
+    public boolean isFirstNameFieldVisible() {
+        return firstNameField.isDisplayed();
     }
-    public boolean isLastNameFieldVisible (){
-        return   lastNameField.isDisplayed();
+
+    public boolean isLastNameFieldVisible() {
+        return lastNameField.isDisplayed();
     }
-    public boolean isEmailFieldVisible (){
-        return   emailField.isDisplayed();
+
+    public boolean isEmailFieldVisible() {
+        return emailField.isDisplayed();
     }
-    public boolean isPasswordFieldVisible (){
-        return   passwordField.isDisplayed();
+
+    public boolean isPasswordFieldVisible() {
+        return passwordField.isDisplayed();
     }
-    public boolean isCreateAccountButtonVisible (){
-        return   createAccountButton.isDisplayed();
+
+    public boolean isCreateAccountButtonVisible() {
+        return createAccountButton.isDisplayed();
     }
-    public boolean isCreateAccountButtonEnabled (){
-        return   createAccountButton.isEnabled();
+
+    public boolean isCreateAccountButtonEnabled() {
+        return createAccountButton.isEnabled();
     }
-    public boolean isContinueWithAppleButtonVisible (){
-        return   continueWithAppleButton.isDisplayed();
+
+    public boolean isContinueWithAppleButtonVisible() {
+        return continueWithAppleButton.isDisplayed();
     }
-    public boolean isContinueWithFacebookButtonVisible (){
-        return   continueWithFacebookButton.isDisplayed();
+
+    public boolean isContinueWithFacebookButtonVisible() {
+        return continueWithFacebookButton.isDisplayed();
     }
-    public boolean isContinueWithGoogleButtonVisible (){
-        return   continueWithGoogleButton.isDisplayed();
+
+    public boolean isContinueWithGoogleButtonVisible() {
+        return continueWithGoogleButton.isDisplayed();
     }
-    public void enterFirstName(final String firstName){
+
+    public void enterFirstName(final String firstName) {
         firstNameField.sendKeys(firstName);
     }
-    public void enterLastName(final String lastName){
+
+    public void enterLastName(final String lastName) {
         lastNameField.sendKeys(lastName);
     }
-    public void enterEmail(final String email){
+
+    public void enterEmail(final String email) {
         emailField.sendKeys(email);
     }
-    public void enterPassword(final String password){
+
+    public void enterPassword(final String password) {
         passwordField.sendKeys(password);
     }
 }
