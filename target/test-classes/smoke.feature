@@ -71,3 +71,17 @@ Feature: Smoke
     Examples:
       | homePage              |
       | https://www.ebay.com  |
+
+  Scenario Outline: Check add product to cart
+    Given User opens '<homePage>' page
+    When User makes search by keyword '<keyword>'
+    And User clicks search button
+    And User clicks on first product
+    And User checks that Add to cart button visible
+    And User clicks on Add to cart button
+    And User checks number of products in cart equals '<numberOfProductsInCart>'
+    Then User checks that cart has added product '<keyword>'
+
+    Examples:
+      | homePage                            | keyword                   |numberOfProductsInCart |
+      | https://www.ebay.com                | hp hpe microserver gen 8  | 1                     |

@@ -25,4 +25,7 @@ public class PageFactoryManager {
     public CartPage getCartPage(){
         return new CartPage(driver);
     }
+    public ProductPage getProductPage(){
+        return new ProductPage(driver);
+    }
 }
